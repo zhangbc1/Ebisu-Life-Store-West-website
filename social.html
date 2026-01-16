@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Social | Ebisu Life Store</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="assets/js/i18n.js"></script>
+
+    <style>
+        /* 针对本页面的补充样式 */
+        .store-panel-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* 基础按钮样式修正 (以防 style.css 没覆盖到) */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, opacity 0.2s;
+            color: white;
+            font-size: 0.95rem;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* 社交媒体颜色 */
+        .btn-ig {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        .btn-tt {
+            background: #000000;
+        }
+        /* 小红书按钮样式 */
+        .btn-xhs {
+            background: #ff2442; /* 小红书红 */
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="nav-left">
+        <img class="brand-logo" src="assets/logo/ebisu-logo.png" alt="Ebisu Life Store" />
+        <div class="brand-text">
+            <div class="logo-text-main">Ebisu Life Store</div>
+            <div class="logo-text-sub">Major Japanese Lifestyle & Collectibles Retailer</div>
+        </div>
+    </div>
+
+    <nav class="nav-right">
+        <a href="index.html" data-i18n="nav_home">HOME</a>
+        <a href="products.html" data-i18n="nav_products">OUR PRODUCT</a>
+        <a href="stores.html" data-i18n="nav_stores">FIND A STORE</a>
+        <a href="social.html" class="nav-active" data-i18n="nav_social">SOCIAL MEDIA</a>
+        <a href="partner.html" class="nav-cta" data-i18n="nav_contact">JOIN US</a>
+        <button class="lang-toggle" type="button" data-lang-toggle>EN</button>
+    </nav>
+</header>
+
+<main>
+    <section class="section">
+        <div class="hero">
+            <h1 class="hero-title" style="margin-bottom: 8px; font-size: 28px;" data-i18n="social_title">
+                Follow Our Stores
+            </h1>
+            <p class="section-subtitle" style="margin-bottom: 24px;" data-i18n="social_subtitle">
+                Get the latest updates on new arrivals and events.
+            </p>
+
+            <div class="social-store-switch">
+                <div class="store-tabs" role="tablist" aria-label="Store social switch">
+                    <button class="store-tab is-active" type="button" data-store="1" role="tab" aria-selected="true">
+                        <span class="tab-title" data-i18n="social_tab_1">Alhambra</span>
+                        <span class="tab-sub" data-i18n="social_tab_1_sub">Store</span>
+                    </button>
+
+                    <button class="store-tab" type="button" data-store="2" role="tab" aria-selected="false">
+                        <span class="tab-title" data-i18n="social_tab_2">Anaheim</span>
+                        <span class="tab-sub" data-i18n="social_tab_2_sub">Store</span>
+                    </button>
+                </div>
+
+                <div class="store-panel">
+                    <p class="store-panel-desc" id="storePanelDesc">
+                        Follow Alhambra for new arrivals & events.
+                    </p>
+
+                    <div class="store-panel-actions">
+                        <a class="btn btn-ig" id="storeIgBtn" href="#" target="_blank" rel="noopener noreferrer">
+                            <span data-i18n="social_btn_ig">Instagram</span>
+                        </a>
+
+                        <a class="btn btn-tt" id="storeTtBtn" href="#" target="_blank" rel="noopener noreferrer">
+                            <span data-i18n="social_btn_tt">TikTok</span>
+                        </a>
+
+                        <a class="btn btn-xhs" id="storeXhsBtn" href="#" target="_blank" rel="noopener noreferrer">
+                            <span data-i18n="social_btn_xhs">Little Red Book</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-wrap">
+            <h2 class="gallery-title" data-i18n="social_gallery_title">
+                In-store Highlights
+            </h2>
+
+            <p class="gallery-subtitle" data-i18n="social_gallery_subtitle">
+                See more on our social media channels.
+            </p>
+
+            <div class="gallery-grid">
+                <figure class="gallery-card">
+                    <img src="assets/vibe/vibe-06.jpg" alt="Ebisu Highlight" loading="lazy" />
+                </figure>
+                <figure class="gallery-card">
+                    <img src="assets/vibe/vibe-02.jpg" alt="Ebisu Highlight" loading="lazy" />
+                </figure>
+                <figure class="gallery-card">
+                    <img src="assets/vibe/vibe-03.jpg" alt="Ebisu Highlight" loading="lazy" />
+                </figure>
+                <figure class="gallery-card">
+                    <img src="assets/vibe/vibe-04.jpg" alt="Ebisu Highlight" loading="lazy" />
+                </figure>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer data-i18n="footer_copy">
+    © 2025 Ebisu Life Store West. All rights reserved.
+</footer>
+
+<script>
+    (function(){
+        // 定义不同门店的数据配置
+        // key 对应 tab 按钮上的 data-store 属性
+        const STORE_DATA = {
+            "1": { // Alhambra
+                descKey: "social_desc_1",
+                ig: "https://www.instagram.com/ebisulifestore",
+                tt: "https://www.tiktok.com/@ebisu.life.store5",
+                xhs: "https://xhslink.com/m/6KJAlv5lVx8" // Alhambra 小红书
+            },
+            "2": { // Anaheim
+                descKey: "social_desc_2",
+                ig: "https://www.instagram.com/ebisuanaheim",
+                tt: "https://www.tiktok.com/@ebisu.anaheim",
+                xhs: "https://xhslink.com/m/3zALlMFnNjg" // Anaheim 小红书
+            }
+        };
+
+        const tabs = Array.from(document.querySelectorAll(".store-tab"));
+        const desc = document.getElementById("storePanelDesc");
+        const igBtn = document.getElementById("storeIgBtn");
+        const ttBtn = document.getElementById("storeTtBtn");
+        const xhsBtn = document.getElementById("storeXhsBtn");
+
+        // 记录当前选中的门店ID，默认为 "1"
+        let currentStoreId = "1";
+
+        // 更新内容的函数
+        function updateContent() {
+            const data = STORE_DATA[currentStoreId];
+            if(!data) return;
+
+            // 1. 更新链接
+            if(igBtn) igBtn.href = data.ig;
+            if(ttBtn) ttBtn.href = data.tt;
+            if(xhsBtn) xhsBtn.href = data.xhs;
+
+            // 2. 更新文字 (尝试从 i18n 系统获取翻译，如果没准备好则不显示)
+            if(desc && window.getI18nText) {
+                const translatedText = window.getI18nText(data.descKey);
+                if(translatedText) {
+                    desc.textContent = translatedText;
+                }
+            }
+        }
+
+        // 切换门店的函数
+        function switchStore(storeId) {
+            currentStoreId = String(storeId);
+
+            // 更新 Tab 样式
+            tabs.forEach(t => {
+                const isActive = t.getAttribute("data-store") === currentStoreId;
+                t.classList.toggle("is-active", isActive);
+                t.setAttribute("aria-selected", isActive);
+            });
+
+            // 更新下方内容
+            updateContent();
+        }
+
+        // 绑定点击事件
+        tabs.forEach(t => {
+            t.addEventListener("click", () => switchStore(t.getAttribute("data-store")));
+        });
+
+        // 监听语言切换事件 (由 i18n.js 触发)
+        document.addEventListener("lang-change", updateContent);
+
+        // 初始化
+        // 稍微延迟一点执行，确保 i18n.js 已经加载完毕
+        setTimeout(() => switchStore("1"), 50);
+    })();
+</script>
+
+</body>
+</html>

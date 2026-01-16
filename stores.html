@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Stores | Ebisu Life Store</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="assets/js/i18n.js"></script>
+
+    <style>
+        .stores-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+            min-height: 60vh;
+        }
+
+        @media (max-width: 768px) {
+            .stores-container {
+                grid-template-columns: 1fr;
+            }
+            .map-panel-wrap {
+                display: none;
+            }
+        }
+
+        .store-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 800px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .store-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .store-card:hover, .store-card.is-active {
+            border-color: var(--pink);
+            box-shadow: 0 4px 12px rgba(255, 138, 162, 0.15);
+        }
+
+        /* Coming Soon 特殊样式 */
+        .store-card.coming-soon {
+            background: #fafafa;
+            border-style: dashed;
+        }
+        .store-card.coming-soon .store-name {
+            color: #666;
+        }
+        .tag-cs {
+            display: inline-block;
+            background: #ff6b81;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+
+        .store-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .region-badge {
+            font-size: 0.75rem;
+            background: #f0f0f0;
+            color: #666;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: normal;
+            margin-left: auto;
+        }
+
+        .store-info-row {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+        .store-info-label {
+            font-weight: 600;
+            min-width: 70px;
+            color: var(--text-main);
+            flex-shrink: 0;
+        }
+
+        .store-actions {
+            margin-top: 16px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .coming-soon .btn-primary {
+            background-color: #aaa;
+            border-color: #aaa;
+        }
+
+        .map-panel-wrap {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 100px);
+            min-height: 500px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: none;
+            position: absolute;
+            top: 0; left: 0;
+        }
+        .map-frame.is-active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="nav-left">
+        <img class="brand-logo" src="assets/logo/ebisu-logo.png" alt="Ebisu Life Store" />
+        <div class="brand-text">
+            <div class="logo-text-main">Ebisu Life Store</div>
+            <div class="logo-text-sub">Japanese Lifestyle & Snacks</div>
+        </div>
+    </div>
+
+    <nav class="nav-right">
+        <a href="index.html" data-i18n="nav_home">HOME</a>
+        <a href="products.html" data-i18n="nav_products">OUR PRODUCT</a>
+        <a href="stores.html" class="nav-active" data-i18n="nav_stores">FIND A STORE</a>
+        <a href="social.html" data-i18n="nav_social">SOCIAL MEDIA</a>
+        <a href="partner.html" class="nav-cta" data-i18n="nav_contact">JOIN US</a>
+        <button class="lang-toggle" type="button" data-lang-toggle>EN</button>
+    </nav>
+</header>
+
+<main>
+    <div style="background:var(--pink-soft); padding: 40px 20px; text-align:center;">
+        <span class="tag-pill" data-i18n="stores_tag">Locations · 门店列表</span>
+        <h1 style="margin: 16px 0 8px; font-size:2rem;" data-i18n="stores_title">门店地址</h1>
+        <p style="color:var(--text-sub); max-width:600px; margin:0 auto;" data-i18n="stores_subtitle">
+            Visit our locations across California and Illinois.
+        </p>
+    </div>
+
+    <div class="stores-container">
+        <div class="store-list">
+
+            <div class="store-card coming-soon is-active" onclick="switchMap(1, this)">
+                <div class="store-name">
+                    Schaumburg · Woodfield
+                    <span class="tag-cs">COMING SOON</span>
+                    <span class="region-badge">IL</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Address</span>
+                    <span>5 Woodfield Mall #F117, Schaumburg, IL 60173</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Hours</span>
+                    <span>Mon – Sun: 10:00 AM – 9:00 PM</span>
+                </div>
+                <div class="store-actions">
+                    <a class="btn btn-primary btn-sm" href="https://maps.google.com/maps?q=5+Woodfield+Mall,+Schaumburg,+IL+60173" target="_blank">Google Maps</a>
+                </div>
+            </div>
+
+            <div class="store-card" onclick="switchMap(2, this)">
+                <div class="store-name">
+                    Alhambra · Main St
+                    <span class="region-badge">LA County</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Address</span>
+                    <span>300 W Main St, Alhambra, CA 91801</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Hours</span>
+                    <span>Mon – Sun: 10:00 AM – 9:00 PM</span>
+                </div>
+                <div class="store-actions">
+                    <a class="btn btn-primary btn-sm" href="https://maps.google.com/maps?q=300+W+Main+St,+Alhambra,+CA+91801" target="_blank">Google Maps</a>
+                </div>
+            </div>
+
+            <div class="store-card" onclick="switchMap(3, this)">
+                <div class="store-name">
+                    Anaheim · Euclid St
+                    <span class="region-badge">OC</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Address</span>
+                    <span>410 N Euclid St, Anaheim, CA 92703</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Hours</span>
+                    <span>Mon – Sun: 10:00 AM – 9:00 PM</span>
+                </div>
+                <div class="store-actions">
+                    <a class="btn btn-primary btn-sm" href="https://maps.google.com/maps?q=410+N+Euclid+St,+Anaheim,+CA+92703" target="_blank">Google Maps</a>
+                </div>
+            </div>
+
+            <div class="store-card coming-soon" onclick="switchMap(4, this)">
+                <div class="store-name">
+                    Rancho Cucamonga
+                    <span class="tag-cs">COMING SOON</span>
+                    <span class="region-badge">Inland Empire</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Address</span>
+                    <span>11098 Foothill Blvd, STE 110, Rancho Cucamonga, CA 91730</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Hours</span>
+                    <span>Mon – Sun: 10:00 AM – 9:00 PM</span>
+                </div>
+                <div class="store-actions">
+                    <a class="btn btn-primary btn-sm" href="https://maps.google.com/maps?q=11098+Foothill+Blvd,+Rancho+Cucamonga,+CA+91730" target="_blank">Google Maps</a>
+                </div>
+            </div>
+
+            <div class="store-card coming-soon" onclick="switchMap(5, this)">
+                <div class="store-name">
+                    Irvine · Walnut Ave
+                    <span class="tag-cs">COMING SOON</span>
+                    <span class="region-badge">OC</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Address</span>
+                    <span>5404 Walnut Ave #E, Irvine, CA</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Hours</span>
+                    <span>Mon – Sun: 10:00 AM – 9:00 PM</span>
+                </div>
+                <div class="store-actions">
+                    <a class="btn btn-primary btn-sm" href="https://maps.google.com/maps?q=5404+Walnut+Ave,+Irvine,+CA" target="_blank">Google Maps</a>
+                </div>
+            </div>
+
+            <div class="store-card coming-soon" onclick="switchMap(6, this)">
+                <div class="store-name">
+                    San Diego · La Jolla
+                    <span class="tag-cs">COMING SOON</span>
+                    <span class="region-badge">SD</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Address</span>
+                    <span>8657 Villa La Jolla Dr, La Jolla, CA 92037</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Hours</span>
+                    <span>Mon – Sun: 10:00 AM – 9:00 PM</span>
+                </div>
+                <div class="store-actions">
+                    <a class="btn btn-primary btn-sm" href="https://maps.google.com/maps?q=8657+Villa+La+Jolla+Dr,+La+Jolla,+CA+92037" target="_blank">Google Maps</a>
+                </div>
+            </div>
+
+            <div class="store-card coming-soon" onclick="switchMap(7, this)">
+                <div class="store-name">
+                    San Diego · Clairemont
+                    <span class="tag-cs">COMING SOON</span>
+                    <span class="region-badge">SD</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Address</span>
+                    <span>8334 Clairemont Mesa Blvd, San Diego, CA 92111</span>
+                </div>
+                <div class="store-info-row">
+                    <span class="store-info-label">Hours</span>
+                    <span>Mon – Sun: 10:00 AM – 9:00 PM</span>
+                </div>
+                <div class="store-actions">
+                    <a class="btn btn-primary btn-sm" href="https://maps.google.com/maps?q=8334+Clairemont+Mesa+Blvd,+San+Diego,+CA+92111" target="_blank">Google Maps</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="map-panel-wrap">
+            <iframe id="map-frame-1" class="map-frame is-active"
+                    src="https://maps.google.com/maps?q=5+Woodfield+Mall,+Schaumburg,+IL+60173&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen loading="lazy"></iframe>
+
+            <iframe id="map-frame-2" class="map-frame"
+                    src="https://maps.google.com/maps?q=300+W+Main+St,+Alhambra,+CA+91801&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen loading="lazy"></iframe>
+
+            <iframe id="map-frame-3" class="map-frame"
+                    src="https://maps.google.com/maps?q=410+N+Euclid+St,+Anaheim,+CA+92703&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen loading="lazy"></iframe>
+
+            <iframe id="map-frame-4" class="map-frame"
+                    src="https://maps.google.com/maps?q=11098+Foothill+Blvd,+Rancho+Cucamonga,+CA+91730&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen loading="lazy"></iframe>
+
+            <iframe id="map-frame-5" class="map-frame"
+                    src="https://maps.google.com/maps?q=5404+Walnut+Ave,+Irvine,+CA&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen loading="lazy"></iframe>
+
+            <iframe id="map-frame-6" class="map-frame"
+                    src="https://maps.google.com/maps?q=8657+Villa+La+Jolla+Dr,+La+Jolla,+CA+92037&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen loading="lazy"></iframe>
+
+            <iframe id="map-frame-7" class="map-frame"
+                    src="https://maps.google.com/maps?q=8334+Clairemont+Mesa+Blvd,+San+Diego,+CA+92111&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+</main>
+
+<footer data-i18n="footer_copy">
+    © 2025 Ebisu Life Store. All rights reserved.
+</footer>
+
+<script>
+    function switchMap(storeId, cardEl) {
+        document.querySelectorAll('.store-card').forEach(el => el.classList.remove('is-active'));
+        if(cardEl) cardEl.classList.add('is-active');
+
+        document.querySelectorAll('.map-frame').forEach(el => el.classList.remove('is-active'));
+        const targetMap = document.getElementById('map-frame-' + storeId);
+        if(targetMap) targetMap.classList.add('is-active');
+    }
+</script>
+
+</body>
+</html>

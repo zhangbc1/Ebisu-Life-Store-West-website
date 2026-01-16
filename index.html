@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="stylesheet" href="style.css">
+  <script defer src="assets/js/i18n.js"></script>
+  <title>Ebisu Life Store | 日本生活方式集合店</title>
+</head>
+
+<body>
+<header>
+  <div class="nav-left">
+    <img class="brand-logo" src="assets/logo/ebisu-logo.png" alt="Ebisu Life Store" />
+    <div class="brand-text">
+      <div class="logo-text-main">Ebisu Life Store</div>
+      <div class="logo-text-sub">Major Japanese Lifestyle & Collectibles Retailer</div>
+    </div>
+  </div>
+
+  <nav class="nav-right">
+    <a href="index.html" data-i18n="nav_home">HOME</a>
+    <a href="products.html" data-i18n="nav_products">OUR PRODUCT</a>
+    <a href="stores.html" data-i18n="nav_stores">FIND A STORE</a>
+    <a href="social.html" data-i18n="nav_social">SOCIAL MEDIA</a>
+    <a href="partner.html" class="nav-cta nav-active" data-i18n="nav_contact">JOIN US</a>
+
+    <!--  语言切换按钮 -->
+    <button class="lang-toggle" type="button" data-lang-toggle>EN</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-split">
+      <div class="hero-left">
+        <span class="tag-pill" data-i18n="hero_tag">日本生活方式 · 线下集合店</span>
+
+        <h1 class="hero-title">
+          <span data-i18n="hero_title_1">WELCOME TO</span> <span>EBISU</span><br />
+          <span data-i18n="hero_title_2">一起把好玩的日本生活带进日常。</span>
+        </h1>
+
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
+          我们专注日式生活方式与潮玩（手办、盲盒等）精选。
+          选品以日本直采进口为核心，尤其是限定零食与独特新品，打造“精品、稀缺、好逛”的体验。
+        </p>
+
+        <div class="hero-actions">
+          <a href="stores.html" class="btn btn-primary" data-i18n="hero_btn_store">查看门店地址</a>
+          <a href="products.html" class="btn btn-outline" data-i18n="hero_btn_products">看看我们都卖什么</a>
+        </div>
+
+        <div class="hero-badges">
+          <span data-i18n="hero_badge_1">日系零食 & 饮料</span>
+          <span data-i18n="hero_badge_2">文具杂货 & 生活小物</span>
+          <span data-i18n="hero_badge_3">轻松好逛的线下空间</span>
+        </div>
+      </div>
+
+      <!-- 右侧：门店照片轮播 -->
+      <div class="hero-right">
+        <div class="decor-stage">
+          <div class="hero-carousel" id="heroCarousel">
+            <img class="is-active" src="assets/stores/store-04.jpg" alt="Ebisu Alhambra" />
+            <img src="assets/stores/store-3.jpg" alt="Ebisu Anaheim" />
+
+            <div class="hero-carousel-badge" id="heroCarouselBadge">
+              <span class="hero-carousel-dot"></span>
+              <span>Alhambra</span>
+            </div>
+
+            <!--  手动切换按钮 -->
+            <button class="carousel-btn prev" type="button" aria-label="Previous image">‹</button>
+            <button class="carousel-btn next" type="button" aria-label="Next image">›</button>
+
+            <!--  小圆点（可点击） -->
+            <div class="carousel-dots" aria-label="Carousel dots">
+              <button type="button" class="dot is-active" data-slide="0" aria-label="Go to slide 1"></button>
+              <button type="button" class="dot" data-slide="1" aria-label="Go to slide 2"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-about" id="about-ebisu">
+    <div class="about-header">
+      <h2 class="about-title-main" data-i18n="about_title_main">ABOUT EBISU</h2>
+      <p class="about-title-sub" data-i18n="about_title_sub">ABOUT EBISU</p>
+      <div class="about-title-underline"></div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card-block">
+        <h3 class="about-card-title" data-i18n="about_card_1_title">发展历程</h3>
+        <p class="about-card-text" data-i18n="about_card_1_text">
+          Ebisu Life Store 由热爱日本生活方式与零售行业的团队创立，
+          起步于北美本地社区门店。随着年轻客群对日系零食、饮料和生活杂货的需求不断增加，
+          我们逐步完善供应链与选品体系，在实践中探索更适合本地消费者的商品结构和陈列方式。
+          目前，Ebisu 正在以稳健节奏拓展门店与合作网络。
+        </p>
+      </div>
+
+      <div class="about-card-block">
+        <h3 class="about-card-title" data-i18n="about_card_2_title">合作政策</h3>
+        <p class="about-card-text" data-i18n="about_card_2_text">
+          Ebisu 采用「直营门店 + 多元合作」模式：门店由团队直接运营，
+          欢迎优质供应商与品牌方以长期合作、联名企划、活动共创等形式加入。
+          我们坚持透明的沟通机制和数据驱动的复盘方式，定期反馈销售表现与消费者反馈，
+          以此优化品类结构与上新节奏，实现合作双方的长期价值。
+        </p>
+      </div>
+
+      <div class="about-card-block">
+        <h3 class="about-card-title" data-i18n="about_card_3_title">品牌介绍</h3>
+        <p class="about-card-text" data-i18n="about_card_3_text">
+          Ebisu Life Store 专注于「日本生活方式」相关产品，
+          包括零食饮料、文具杂货、部分美妆与生活小物。品牌核心关键词是：
+          轻松、实用、好逛。我们希望通过精心选品、舒适的店内动线、
+          以及持续更新的主题陈列，让顾客在日常生活中，随时可以找到一点小小的快乐与灵感。
+          未来，Ebisu 也将持续拓展线上线下触点，为合作伙伴与消费者提供更丰富的体验。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-inside">
+    <div class="section-header center">
+      <h2 class="inside-title"><span data-i18n="inside_title">WHAT'S INSIDE?</span></h2>
+      <p class="section-subtitle" data-i18n="inside_subtitle">
+        这是 Ebisu 里 4 个主要的产品世界。想看更详细的产品介绍，可以前往“我们卖什么”页面。
+      </p>
+    </div>
+
+    <div class="grid-4 inside-grid">
+      <a href="products.html#blind-boxes" class="inside-card">
+        <div class="inside-icon">🎮</div>
+        <p class="inside-en">Art Toy</p>
+        <p class="inside-cn" data-i18n="inside_cn_1">潮流玩具</p>
+        <p class="inside-desc" data-i18n="inside_desc_1">从动漫角色到可爱动物，每一次拆盒都是一次小小的心跳加速。</p>
+        <span class="inside-link" data-i18n="inside_link">了解更多品类 →</span>
+      </a>
+
+      <a href="products.html#j-beauty" class="inside-card">
+        <div class="inside-icon">✨</div>
+        <p class="inside-en">BEAUTY</p>
+        <p class="inside-cn" data-i18n="inside_cn_2">流行药妆</p>
+        <p class="inside-desc" data-i18n="inside_desc_2">精选日本护肤与美妆好物，注重实用效果，也照顾日常小仪式感。</p>
+        <span class="inside-link" data-i18n="inside_link">了解更多品类 →</span>
+      </a>
+
+      <a href="products.html#lifestyle" class="inside-card">
+        <div class="inside-icon">💙</div>
+        <p class="inside-en">LIFESTYLE</p>
+        <p class="inside-cn" data-i18n="inside_cn_3">生活好物</p>
+        <p class="inside-desc" data-i18n="inside_desc_3">文具、杂货、小摆件，把「好用」和「好看」放在同一个货架上。</p>
+        <span class="inside-link" data-i18n="inside_link">了解更多品类 →</span>
+      </a>
+
+      <a href="products.html#snacks" class="inside-card">
+        <div class="inside-icon">🍙</div>
+        <p class="inside-en">SNACKS</p>
+        <p class="inside-cn" data-i18n="inside_cn_4">零食饮料</p>
+        <p class="inside-desc" data-i18n="inside_desc_4">来自日本及亚洲的零食世界，从经典款到期间限定，慢慢发掘。</p>
+        <span class="inside-link" data-i18n="inside_link">了解更多品类 →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section section-vibe">
+    <div class="vibe-header-row">
+      <div>
+        <h2 class="vibe-title">
+          <span data-i18n="vibe_title_1">CATCH THE</span> <span>VIBE</span>
+        </h2>
+        <p class="vibe-hashtags">#EbisuLifeStore #CuteFinds #HappyLife</p>
+      </div>
+
+      <div class="vibe-social-buttons">
+        <button class="vibe-social-btn ig" data-i18n="vibe_btn_ig"
+                onclick="window.open('https://www.instagram.com/ebisulifestore','_blank')">
+          Instagram
+        </button>
+        <button class="vibe-social-btn tt" data-i18n="vibe_btn_tt"
+                onclick="window.open('https://www.tiktok.com/@ebisu.life.store5','_blank')">
+          TikTok
+        </button>
+      </div>
+    </div>
+
+    <div class="vibe-scroller">
+      <div class="vibe-card">
+        <img class="vibe-thumb" src="assets/vibe/vibe-01.jpg" alt="Ebisu activity 1" />
+        <div class="vibe-overlay">
+          <div class="vibe-user">@ebisu_daily</div>
+          <div class="vibe-likes">❤ 16.6K</div>
+        </div>
+      </div>
+
+      <div class="vibe-card">
+        <img class="vibe-thumb" src="assets/vibe/vibe-02.jpg" alt="Ebisu activity 2" />
+        <div class="vibe-overlay">
+          <div class="vibe-user">@cute_snacks</div>
+          <div class="vibe-likes">❤ 823</div>
+        </div>
+      </div>
+
+      <div class="vibe-card">
+        <img class="vibe-thumb" src="assets/vibe/vibe-06.jpg" alt="Ebisu activity 3" />
+        <div class="vibe-overlay">
+          <div class="vibe-user">@stationery_corner</div>
+          <div class="vibe-likes">❤ 18.8K</div>
+        </div>
+      </div>
+
+      <div class="vibe-card">
+        <img class="vibe-thumb" src="assets/vibe/vibe-04.jpg" alt="Ebisu activity 4" />
+        <div class="vibe-overlay">
+          <div class="vibe-user">@ebisu_events</div>
+          <div class="vibe-likes">❤ 3.5K</div>
+        </div>
+      </div>
+
+      <div class="vibe-card">
+        <video class="vibe-thumb" src="assets/vibe/vibe-05.mp4" autoplay muted loop playsinline></video>
+        <div class="vibe-overlay">
+          <div class="vibe-user">@cozy_corners</div>
+          <div class="vibe-likes">❤ 14.0K</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-i18n="footer_copy">
+  © 2025 Ebisu Life Store West. All rights reserved.
+</footer>
+
+
+<script>
+  (function(){
+    const carousel = document.getElementById('heroCarousel');
+    if(!carousel) return;
+
+    const slides = Array.from(carousel.querySelectorAll('img'));
+    const badge = document.getElementById('heroCarouselBadge');
+    const prevBtn = carousel.querySelector('.carousel-btn.prev');
+    const nextBtn = carousel.querySelector('.carousel-btn.next');
+    const dots = Array.from(carousel.querySelectorAll('.carousel-dots .dot'));
+
+    const labels = ['Alhambra', 'Anaheim'];
+
+    let idx = 0;
+    let timer = null;
+    const INTERVAL = 3500;
+
+    function updateDots(i){
+      if(!dots.length) return;
+      dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+    }
+
+    function updateBadge(i){
+      if(!badge) return;
+      const labelNode = badge.querySelector('span:last-child');
+      if(labelNode) labelNode.textContent = labels[i] || '';
+    }
+
+    function show(i){
+      idx = (i + slides.length) % slides.length;
+      slides.forEach((img, k) => img.classList.toggle('is-active', k === idx));
+      updateBadge(idx);
+      updateDots(idx);
+    }
+
+    function start(){
+      stop();
+      timer = setInterval(() => show(idx + 1), INTERVAL);
+    }
+
+    function stop(){
+      if(timer) clearInterval(timer);
+      timer = null;
+    }
+
+    // ✅ 按钮事件
+    if(prevBtn){
+      prevBtn.addEventListener('click', () => {
+        show(idx - 1);
+        start(); // 手动切换后重置自动轮播
+      });
+    }
+
+    if(nextBtn){
+      nextBtn.addEventListener('click', () => {
+        show(idx + 1);
+        start();
+      });
+    }
+
+    //  dots 点击跳转
+    dots.forEach(d => {
+      d.addEventListener('click', () => {
+        const n = Number(d.getAttribute('data-slide'));
+        if(Number.isFinite(n)) show(n);
+        start();
+      });
+    });
+
+    //  鼠标悬停暂停，离开继续
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+
+    // init
+    show(0);
+    start();
+  })();
+</script>
+</body>
+</html>
