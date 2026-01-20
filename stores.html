@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Stores | Ebisu Life Store</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="js/i18n.js"></script>
+    <script defer src="assets/js/i18n.js"></script>
 
     <style>
         .stores-container {
@@ -79,9 +79,9 @@
             margin: 0 0 12px 0;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap; 
         }
-
+        
         .region-badge {
             font-size: 0.75rem;
             background: #f0f0f0;
@@ -111,7 +111,7 @@
             display: flex;
             gap: 10px;
         }
-
+        
         .coming-soon .btn-primary {
             background-color: #aaa;
             border-color: #aaa;
@@ -128,7 +128,7 @@
             height: calc(100vh - 100px);
             min-height: 500px;
         }
-
+        
         .map-frame {
             width: 100%;
             height: 100%;
@@ -146,7 +146,7 @@
 <body>
 <header>
     <div class="nav-left">
-        <img class="brand-logo" src="logo/ebisu-logo.png" alt="Ebisu Life Store" />
+        <img class="brand-logo" src="assets/logo/ebisu-logo.png" alt="Ebisu Life Store" />
         <div class="brand-text">
             <div class="logo-text-main">Ebisu Life Store</div>
             <div class="logo-text-sub">Japanese Lifestyle & Snacks</div>
@@ -174,7 +174,7 @@
 
     <div class="stores-container">
         <div class="store-list">
-
+            
             <div class="store-card coming-soon is-active" onclick="switchMap(1, this)">
                 <div class="store-name">
                     Schaumburg · Woodfield
@@ -249,25 +249,6 @@
                 </div>
             </div>
 
-            <div class="store-card coming-soon" onclick="switchMap(5, this)">
-                <div class="store-name">
-                    Irvine · Walnut Ave
-                    <span class="tag-cs">COMING SOON</span>
-                    <span class="region-badge">OC</span>
-                </div>
-                <div class="store-info-row">
-                    <span class="store-info-label">Address</span>
-                    <span>5404 Walnut Ave #E, Irvine, CA</span>
-                </div>
-                <div class="store-info-row">
-                    <span class="store-info-label">Hours</span>
-                    <span>Mon – Sun: 10:00 AM – 9:00 PM</span>
-                </div>
-                <div class="store-actions">
-                    <a class="btn btn-primary btn-sm" href="https://maps.google.com/maps?q=5404+Walnut+Ave,+Irvine,+CA" target="_blank">Google Maps</a>
-                </div>
-            </div>
-
             <div class="store-card coming-soon" onclick="switchMap(6, this)">
                 <div class="store-name">
                     San Diego · La Jolla
@@ -310,32 +291,28 @@
 
         <div class="map-panel-wrap">
             <iframe id="map-frame-1" class="map-frame is-active"
-                    src="https://maps.google.com/maps?q=5+Woodfield+Mall,+Schaumburg,+IL+60173&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    allowfullscreen loading="lazy"></iframe>
+                src="https://maps.google.com/maps?q=5+Woodfield+Mall,+Schaumburg,+IL+60173&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen loading="lazy"></iframe>
 
             <iframe id="map-frame-2" class="map-frame"
-                    src="https://maps.google.com/maps?q=300+W+Main+St,+Alhambra,+CA+91801&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    allowfullscreen loading="lazy"></iframe>
+                src="https://maps.google.com/maps?q=300+W+Main+St,+Alhambra,+CA+91801&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen loading="lazy"></iframe>
 
             <iframe id="map-frame-3" class="map-frame"
-                    src="https://maps.google.com/maps?q=410+N+Euclid+St,+Anaheim,+CA+92703&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    allowfullscreen loading="lazy"></iframe>
+                src="https://maps.google.com/maps?q=410+N+Euclid+St,+Anaheim,+CA+92703&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen loading="lazy"></iframe>
 
             <iframe id="map-frame-4" class="map-frame"
-                    src="https://maps.google.com/maps?q=11098+Foothill+Blvd,+Rancho+Cucamonga,+CA+91730&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    allowfullscreen loading="lazy"></iframe>
-
-            <iframe id="map-frame-5" class="map-frame"
-                    src="https://maps.google.com/maps?q=5404+Walnut+Ave,+Irvine,+CA&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    allowfullscreen loading="lazy"></iframe>
-
+                src="https://maps.google.com/maps?q=11098+Foothill+Blvd,+Rancho+Cucamonga,+CA+91730&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen loading="lazy"></iframe>
+            
             <iframe id="map-frame-6" class="map-frame"
-                    src="https://maps.google.com/maps?q=8657+Villa+La+Jolla+Dr,+La+Jolla,+CA+92037&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    allowfullscreen loading="lazy"></iframe>
+                src="https://maps.google.com/maps?q=8657+Villa+La+Jolla+Dr,+La+Jolla,+CA+92037&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen loading="lazy"></iframe>
 
             <iframe id="map-frame-7" class="map-frame"
-                    src="https://maps.google.com/maps?q=8334+Clairemont+Mesa+Blvd,+San+Diego,+CA+92111&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    allowfullscreen loading="lazy"></iframe>
+                src="https://maps.google.com/maps?q=8334+Clairemont+Mesa+Blvd,+San+Diego,+CA+92111&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen loading="lazy"></iframe>
         </div>
     </div>
 </main>
